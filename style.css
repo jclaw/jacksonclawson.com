@@ -1,0 +1,75 @@
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+h1,h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 35px;
+    margin: 0;
+}
+
+p {
+    line-height: 26px;
+    font-size: 18px;
+}
+
+.container {
+    padding: 40px 0px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content {
+    max-width: 600px;
+}
+
+
+
+#site-header {
+    /*position: relative;*/
+    display: inline-block;
+    margin-top: 0px;
+}
+
+#arrow-right {
+    fill: #96CF57;
+    display: inline-block;
+    margin-bottom: 6px;
+    margin-right: -4px;
+    margin-left: -27px;
+}
+
+.titles {
+    margin-bottom: 60px;
+}
+
+.square {
+    width: 9px;
+    height: 9px;
+    background: #96CF57;
+    display: inline-block;
+}
+
+.beginning .square {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: -6px;
+}
+
+.ending p {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.ending .square {
+    vertical-align: bottom;
+    margin-left: 5px;
+}
