@@ -7,12 +7,12 @@ h1,h2 {
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 h3 {
     font-weight: 500;
-    font-size: 35px;
+    font-size: 28px;
     margin: 0;
 }
 
@@ -22,19 +22,22 @@ p {
 }
 
 .container {
-    padding: 40px 0px;
+    padding: 40px 0;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .content {
     max-width: 600px;
+    padding: 0 24px;
 }
 
 
 
-#site-header {
-    /*position: relative;*/
+.site-header {
+    padding: 0 24px;
+}
+.site-header h1 {
     display: inline-block;
     margin-top: 0px;
 }
@@ -42,20 +45,20 @@ p {
 #arrow-right {
     fill: #96CF57;
     display: inline-block;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     margin-right: -4px;
     margin-left: -27px;
 }
 
 .titles {
     margin-bottom: 60px;
+    padding: 0 24px;
 }
 
 .square {
     width: 9px;
     height: 9px;
     background: #96CF57;
-    display: inline-block;
 }
 
 .beginning .square {
@@ -65,11 +68,53 @@ p {
 }
 
 .ending p {
-    display: inline-block;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
-.ending .square {
-    vertical-align: bottom;
-    margin-left: 5px;
+.container > .square {
+    margin-left: 86px;
+}
+
+@media only screen and (min-width: 345px) {
+    .container > .square {
+        margin-left: 315px;
+    }
+}
+
+@media only screen and (min-width: 378px) {
+    .container > .square {
+        margin-left: 210px;
+    }
+}
+
+@media only screen and (min-width: 415px) {
+    .container > .square {
+        margin-left: 175px;
+    }
+}
+
+@media only screen and (min-width: 502px) {
+    .container > .square {
+        margin-left: 86px;
+    }
+}
+
+@media only screen and (min-width: 561px) {
+    .container > .square {
+        margin-left: 530px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 60px;
+    }
+
+    h3 {
+        font-size: 35px;
+    }
+
+    #arrow-right {
+        margin-bottom: 6px;
+    }
 }
