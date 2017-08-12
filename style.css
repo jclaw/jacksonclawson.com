@@ -16,6 +16,11 @@ h3 {
     margin: 0;
 }
 
+a {
+    color: #81B449;
+    text-decoration: none;
+}
+
 p {
     line-height: 26px;
     font-size: 18px;
@@ -43,7 +48,8 @@ p {
 }
 
 #arrow-right {
-    fill: #96CF57;
+    fill: #81B449;
+    opacity: 1;
     display: inline-block;
     margin-bottom: 2px;
     margin-right: -4px;
@@ -58,7 +64,8 @@ p {
 .square {
     width: 9px;
     height: 9px;
-    background: #96CF57;
+    background: #81B449;
+    opacity: .8;
 }
 
 .beginning .square {
