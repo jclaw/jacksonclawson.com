@@ -1,0 +1,16 @@
+# Site settings
+title: Jacksonclawson
+baseurl: "/" # the subpath of your site, e.g. /blog/
+url: "http://www.jacksonclawson.com" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+
+# exclusions:
+exclude:
+ - Gruntfile.js
+ - bower_components
+ - node_modules
+ - scss
+ - config.rb
+ - package.json
