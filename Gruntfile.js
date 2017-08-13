@@ -10,16 +10,18 @@ module.exports = function(grunt) {
                 files: [
                     'scss/*'
                 ],
-                tasks: 'compass'
+                tasks: 'compass:dev'
             }
         },
         // Compile scss
         compass: {
-            options: {
-                sassDir: 'scss',
-                cssDir: 'stylesheets',
-                specify: 'scss/app.scss',
-                sourcemap: true
+            dev: {
+                options: {
+                    sassDir: 'scss',
+                    cssDir: 'stylesheets',
+                    specify: 'scss/app.scss',
+                    sourcemap: true
+                }
             }
         },
         // configure jekyll build and serve tasks
