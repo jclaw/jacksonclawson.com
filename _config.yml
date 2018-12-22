@@ -1,5 +1,5 @@
 # Site settings
-title: Jacksonclawson
+title: "Jackson Clawson | Designer/Engineer"
 baseurl: "/" # the subpath of your site, e.g. /blog/
 url: "http://www.jacksonclawson.com" # the base hostname & protocol for your site
 
@@ -14,3 +14,5 @@ exclude:
  - scss
  - config.rb
  - package.json
+ - bower.json
+ - README.md

@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 options: {
                     sassDir: 'scss',
                     cssDir: 'stylesheets',
-                    specify: 'scss/app.scss',
+                    // specify: 'scss/app.scss',
                     sourcemap: true
                 }
             }
