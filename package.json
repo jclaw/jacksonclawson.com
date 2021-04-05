@@ -1,0 +1,23 @@
+{
+  "name": "jacksonclawson.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jclaw/jacksonclawson.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jclaw/jacksonclawson.com/issues"
+  },
+  "homepage": "https://github.com/jclaw/jacksonclawson.com#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  }
+}
