@@ -23,8 +23,8 @@
     </head>
     <body>
         {% js %}console.log("hello"){% endjs %}
-        
-        {{ content | safe }}
+
+        {{ content }}
         <script src="{% getBundleFileUrl "js" %}"></script>
     </body>
 </html>
