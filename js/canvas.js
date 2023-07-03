@@ -1,5 +1,5 @@
 (function () {
-  
+  console.log('hi');
   function draw() {
     const canvas = document.getElementById("tutorial");
     if (canvas.getContext) {
