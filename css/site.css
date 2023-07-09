@@ -26,18 +26,6 @@ p {
     font-size: 18px;
 }
 
-.container {
-    padding: 40px 0;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.content {
-    max-width: 600px;
-    padding: 0 24px;
-}
-
-
 
 .site-header {
     padding: 0 24px;
@@ -54,62 +42,6 @@ p {
     margin-bottom: 2px;
     margin-right: -4px;
     margin-left: -27px;
-}
-
-.titles {
-    margin-bottom: 60px;
-    padding: 0 24px;
-}
-
-.square {
-    width: 9px;
-    height: 9px;
-    background: #81B449;
-    opacity: .8;
-}
-
-.beginning .square {
-    position: absolute;
-    margin-left: -20px;
-    margin-top: -6px;
-}
-
-.ending p {
-    margin-bottom: 0;
-}
-
-.container > .square {
-    margin-left: 86px;
-}
-
-@media only screen and (min-width: 345px) {
-    .container > .square {
-        margin-left: 315px;
-    }
-}
-
-@media only screen and (min-width: 378px) {
-    .container > .square {
-        margin-left: 210px;
-    }
-}
-
-@media only screen and (min-width: 415px) {
-    .container > .square {
-        margin-left: 175px;
-    }
-}
-
-@media only screen and (min-width: 502px) {
-    .container > .square {
-        margin-left: 86px;
-    }
-}
-
-@media only screen and (min-width: 561px) {
-    .container > .square {
-        margin-left: 530px;
-    }
 }
 
 @media only screen and (min-width: 768px) {
