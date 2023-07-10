@@ -5,7 +5,7 @@ canvas {
     border: 1px solid grey;
 }
 
-.game-board {
+#game-board {
     --line-color: #e8e8e8;
     max-width: min(95vh, 40vw);
     margin: 0 auto;
@@ -14,44 +14,49 @@ canvas {
     grid-template-columns: repeat(10, 1fr);
 }
 
-.game-board .quadrant {
+#game-board .quadrant {
     position: relative;
 }
 
-.game-board .quadrant:after {
+#game-board .quadrant:after {
   content: "";
   display: block;
   padding-bottom: 100%;
 }
 
-.game-board .line {
+#game-board .line {
     background-color: transparent;
     position: absolute;
 }
 
-.game-board .line:hover {
+#game-board .line:hover {
     background: #d0daec;
+    z-index: 1;
+}
+#game-board .line.filled {
+    background: #5285df;
+    z-index: 1;
 }
 
-.game-board .left {
+#game-board .left {
     width: 8px;
     height: 100%;
     background: linear-gradient(to right, rgba(255,255,255,0) 40%, var(--line-color) 40%, var(--line-color) 60%, rgba(255,255,255,0) 60%);
     left: -10%;
 }
-.game-board .top {
+#game-board .top {
     width: 100%;
     height: 8px;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 40%, var(--line-color) 40%, var(--line-color) 60%, rgba(255,255,255,0) 60%);
     top: -10%;
 }
-.game-board .right {
+#game-board .right {
     width: 8px;
     height: 100%;
     background: linear-gradient(to left, rgba(255,255,255,0) 40%, var(--line-color) 40%, var(--line-color) 60%, rgba(255,255,255,0) 60%);
     right: -10%;
 }
-.game-board .bottom {
+#game-board .bottom {
     width: 100%;
     height: 8px;
     background: linear-gradient(to top, rgba(255,255,255,0) 40%, var(--line-color) 40%, var(--line-color) 60%, rgba(255,255,255,0) 60%);

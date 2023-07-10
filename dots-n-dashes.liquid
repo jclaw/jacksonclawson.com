@@ -6,7 +6,7 @@ layout: layout.liquid
 
 <div class="container">
     <!-- <canvas id="tutorial" width="2000" height="2000"></canvas> -->
-    <div class="game-board">
+    <div id="game-board">
         {% for i in (0..9) %}
             {% for j in (0..9) %}
                 <div class="quadrant" data-row="{{i}}" data-col="{{j}}">
