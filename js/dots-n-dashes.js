@@ -28,7 +28,26 @@
       return Math.max(...this.distanceFrom(dot));
     }
     print() {
-      return `[${this.xNum},${this.yNum}]`
+      return DotCache.key(this.xNum, this.yNum)
+    }
+  }
+
+  class DotCache {
+    static cache = {}
+
+    static key(xNum, yNum) {
+      return `[${xNum},${yNum}]`
+    }
+    static getDot(xNum, yNum) {
+      let key = DotCache.key(xNum, yNum)
+
+      if (key in DotCache.cache) {
+        return DotCache.cache[key]
+      } else {
+        let dot = new Dot(xNum, yNum)
+        DotCache.cache[key] = dot
+        return dot
+      }
     }
   }
 
@@ -56,7 +75,7 @@
   }
 
   class LineCache {
-    static lineCache = {}
+    static cache = {}
 
     static key(start, end) {
       return `${start.print()},${end.print()}`
@@ -64,11 +83,11 @@
     static getLine(start, end) {
       let key = LineCache.key(start, end)
 
-      if (key in LineCache.lineCache) {
-        return LineCache.lineCache[key]
+      if (key in LineCache.cache) {
+        return LineCache.cache[key]
       } else {
         let line = new Line(start, end)
-        LineCache.lineCache[key] = line
+        LineCache.cache[key] = line
         return line
       }
     }
@@ -78,10 +97,10 @@
     constructor(xNum, yNum) {
       this.xNum = xNum;
       this.yNum = yNum;
-      this.NW = new Dot(xNum, yNum)
-      this.NE = new Dot(xNum + 1, yNum)
-      this.SW = new Dot(xNum, yNum + 1)
-      this.SE = new Dot(xNum + 1, yNum + 1)
+      this.NW = DotCache.getDot(xNum, yNum)
+      this.NE = DotCache.getDot(xNum + 1, yNum)
+      this.SW = DotCache.getDot(xNum, yNum + 1)
+      this.SE = DotCache.getDot(xNum + 1, yNum + 1)
       this.top = LineCache.getLine(this.NW, this.NE)
       this.right = LineCache.getLine(this.NE, this.SE)
       this.bottom = LineCache.getLine(this.SE, this.SW)
@@ -93,7 +112,6 @@
   function draw(canvas) {
     if (canvas.getContext) {
       const ctx = canvas.getContext("2d");
-
 
       for (let i = 0; i < BOARD_SIZE + 1; i++) {
         for (let j = 0; j < BOARD_SIZE + 1; j++) {

@@ -9,7 +9,10 @@ layout: layout.liquid
     <div class="game-board">
         {% for i in (0..9) %}
             {% for j in (0..9) %}
-                <div data-row="{{i}}" data-col="{{j}}"></div>
+                <div class="quadrant">
+                    <div class="line top" data-col="{{j}}"></div>
+                    <div class="line left" data-row="{{i}}"></div>
+                </div>
             {% endfor %}
         {% endfor %}
     </div>

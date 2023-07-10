@@ -26,6 +26,10 @@ p {
     font-size: 18px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 
 .site-header {
     padding: 0 24px;
