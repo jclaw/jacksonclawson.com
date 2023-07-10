@@ -1,0 +1,16 @@
+---
+layout: layout.liquid
+---
+{% js %}{% include "js/canvas.js" %}{% endjs %}
+{% css %}{% include "css/canvas.css" %}{% endcss %}
+
+<div class="container">
+    <!-- <canvas id="tutorial" width="2000" height="2000"></canvas> -->
+    <div class="game-board">
+        {% for i in (0..9) %}
+            {% for j in (0..9) %}
+                <div data-row="{{i}}" data-col="{{j}}"></div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>

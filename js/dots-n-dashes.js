@@ -1,8 +1,8 @@
 (function () {
   addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("tutorial");
-    draw(canvas);
-    eventListeners(canvas);
+    // draw(canvas);
+    // eventListeners(canvas);
   });
 
   const CANVAS_SIZE_PIXELS = 2000

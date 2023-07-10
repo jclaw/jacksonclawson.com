@@ -1,0 +1,25 @@
+canvas {
+    display: block;
+    max-width: min(95vh, 40vw);
+    margin: 0 auto;
+    border: 1px solid grey;
+}
+
+.game-board {
+    max-width: min(95vh, 40vw);
+    margin: 0 auto;
+    border: 1px solid grey;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+
+.game-board > div {
+    background: red;
+}
+
+.game-board > div:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
