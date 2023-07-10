@@ -9,9 +9,15 @@ layout: layout.liquid
     <div class="game-board">
         {% for i in (0..9) %}
             {% for j in (0..9) %}
-                <div class="quadrant">
-                    <div class="line top" data-col="{{j}}"></div>
-                    <div class="line left" data-row="{{i}}"></div>
+                <div class="quadrant" data-row="{{i}}" data-col="{{j}}">
+                    <div class="line left"></div>
+                    <div class="line top"></div>
+                    {% if i == 9 %}
+                        <div class="line bottom"></div>
+                    {% endif %}
+                    {% if j == 9 %}
+                        <div class="line right"></div>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% endfor %}
