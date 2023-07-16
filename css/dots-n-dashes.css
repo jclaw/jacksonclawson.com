@@ -5,6 +5,10 @@ canvas {
     border: 1px solid grey;
 }
 
+#score-board .whose-turn [aria-hidden="true"] {
+    display: none;
+}
+
 #game-board {
     --line-color: #e8e8e8;
     max-width: min(95vh, 40vw);
@@ -24,6 +28,13 @@ canvas {
   padding-bottom: 100%;
 }
 
+#game-board .quadrant.complete.player0 {
+    background: violet;
+}
+#game-board .quadrant.complete.player1 {
+    background: orange;
+}
+
 #game-board .line {
     background-color: transparent;
     position: absolute;
@@ -34,8 +45,13 @@ canvas {
     z-index: 1;
 }
 #game-board .line.filled {
-    background: #5285df;
     z-index: 1;
+}
+#game-board .line.filled.player0 {
+    background: #5285df;
+}
+#game-board .line.filled.player1 {
+    background: #e06565;
 }
 
 #game-board .left {

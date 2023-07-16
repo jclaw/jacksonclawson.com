@@ -16,7 +16,9 @@
   // const BOARD_SIZE_PIXELS = BOARD_SIZE * PIXELS_PER_SQUARE
   const BOARD_START_X = MARGIN
   const BOARD_START_Y = MARGIN
-  const CIRCLE_RADIUS = 15
+  let TURN_TICKER = 0
+  const PLAYER_CLASSES = ['player0', 'player1']
+  let POINTS
 
   class Dot {
     constructor (xNum, yNum) {
@@ -166,9 +168,28 @@
       // this.left = LineCache.getLine(this.SW, this.NW)
     }
 
-    static checkIfComplete (el) {
+    static markIfComplete (el) {
+      if (el.classList.contains('complete')) {
+        return false
+      }
       const quad = QuadrantCache.getQuadrant(el)
       console.log(quad)
+
+      const filter = quad.lines.filter((line) => {
+        return line.classList.contains('filled')
+      })
+
+      const complete = filter.length === 4
+
+      if (complete) {
+        let playerClass = PLAYER_CLASSES[TURN_TICKER]
+        el.classList.remove(...PLAYER_CLASSES)
+        el.classList.add('complete', playerClass)
+        POINTS.addPoint(TURN_TICKER)
+      }
+
+      console.log(`complete: ${complete}`)
+      return complete
 
       // do the check
       // mark the quadrant as done
@@ -230,10 +251,33 @@
     }
   }
 
+  class Points {
+    constructor (el) {
+      this.points = {
+        0: 0,
+        1: 0
+      }
+      this.player0El = el.querySelector('.player0')
+      this.player1El = el.querySelector('.player1')
+    }
+
+    addPoint(player) {
+      this.points[player]++
+      this.updateDom()
+    }
+
+    updateDom() {
+      this.player0El.textContent = this.points[0]
+      this.player1El.textContent = this.points[1]
+    }
+  }
+
   function init (gameBoard) {
     // gameBoard.querySelectorAll('.quadrant').forEach((quadrant) => {
     //   QuadrantCache.getQuadrant(quadrant.dataset.row, quadrant.dataset.col)
     // })
+
+    POINTS = new Points(document.querySelector('#score-board'))
 
     gameBoard.querySelectorAll('.quadrant').forEach((quad) => {
       QuadrantCache.makeQuadrant(quad)
@@ -247,19 +291,49 @@
         if (target.classList.contains('filled')) {
           console.log('line already filled')
         } else {
-          target.classList.add('filled')
+          let playerClass = PLAYER_CLASSES[TURN_TICKER]
+          target.classList.remove(...PLAYER_CLASSES)
+          target.classList.add('filled', playerClass)
           const quads = Line.getAssociatedQuadrants(target)
-          quads.forEach((quad) => {
-            Quadrant.checkIfComplete(quad)
+          const anyCompleted = quads.map((quad) => {
+            return Quadrant.markIfComplete(quad)
           })
-          didWeWin()
+          // ugh messy
+          if (anyCompleted.filter((a) => a).length) {
+            console.log('user gets another turn')
+          } else {
+            console.log('switch turns')
+            switchTurns()
+          }
+
+          let weDid = didWeWin()
+          if (weDid) {
+            console.log('game over!')
+          } else {
+            console.log('not done yet')
+          }
         }
       }
     })
   }
 
+  function switchTurns () {
+    TURN_TICKER = Math.abs(TURN_TICKER - 1)
+    
+    const whoseTurnEl = document.querySelector('.whose-turn')
+    const [player0El, player1El] = whoseTurnEl.querySelectorAll('span')
+
+    if (player0El.getAttribute('aria-hidden') === 'true') {
+      player0El.removeAttribute('aria-hidden')
+      player1El.setAttribute('aria-hidden', true)
+    } else {
+      player1El.removeAttribute('aria-hidden')
+      player0El.setAttribute('aria-hidden', true)
+    }
+  }
+
   function didWeWin () {
-    // TODO
+    return document.querySelectorAll('.quadrant:not(.complete)').length === 0
   }
 
   // function draw(canvas) {
