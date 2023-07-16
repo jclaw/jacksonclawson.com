@@ -98,7 +98,6 @@
       }
 
       const quad2 = document.querySelector(`#game-board .quadrant[data-row="${row}"][data-col="${col}"]`)
-
       return [quad1, quad2].filter(Boolean)
     }
   }
@@ -124,20 +123,53 @@
   }
 
   class Quadrant {
-    constructor (xNum, yNum) {
-      this.xNum = xNum
-      this.yNum = yNum
-      this.NW = DotCache.getDot(xNum, yNum)
-      this.NE = DotCache.getDot(xNum + 1, yNum)
-      this.SW = DotCache.getDot(xNum, yNum + 1)
-      this.SE = DotCache.getDot(xNum + 1, yNum + 1)
-      this.top = LineCache.getLine(this.NW, this.NE)
-      this.right = LineCache.getLine(this.NE, this.SE)
-      this.bottom = LineCache.getLine(this.SE, this.SW)
-      this.left = LineCache.getLine(this.SW, this.NW)
+    // constructor (xNum, yNum) {
+    //   this.xNum = xNum
+    //   this.yNum = yNum
+    //   this.NW = DotCache.getDot(xNum, yNum)
+    //   this.NE = DotCache.getDot(xNum + 1, yNum)
+    //   this.SW = DotCache.getDot(xNum, yNum + 1)
+    //   this.SE = DotCache.getDot(xNum + 1, yNum + 1)
+    //   this.top = LineCache.getLine(this.NW, this.NE)
+    //   this.right = LineCache.getLine(this.NE, this.SE)
+    //   this.bottom = LineCache.getLine(this.SE, this.SW)
+    //   this.left = LineCache.getLine(this.SW, this.NW)
+    // }
+
+    constructor (el) {
+      this.el = el
+      const row = el.dataset.row
+      const col = el.dataset.col
+      this.row = row
+      this.col = col
+
+      this.left = el.querySelector('.line.left')
+      this.top = el.querySelector('.line.top')
+      this.right = el.querySelector('.line.right')
+      this.bottom = el.querySelector('.line.bottom')
+
+      if (!this.right) {
+        const quadRight = QuadrantCache.getQuadrantRight(el)
+        this.right = quadRight.querySelector('.line.left')
+      }
+
+      if (!this.bottom) {
+        const quadBottom = QuadrantCache.getQuadrantBottom(el)
+        this.bottom = quadBottom.querySelector('.line.top')
+      }
+
+      this.lines = [this.left, this.top, this.right, this.bottom]
+
+      // this.top = LineCache.getLine(this.NW, this.NE)
+      // this.right = LineCache.getLine(this.NE, this.SE)
+      // this.bottom = LineCache.getLine(this.SE, this.SW)
+      // this.left = LineCache.getLine(this.SW, this.NW)
     }
 
     static checkIfComplete (el) {
+      const quad = QuadrantCache.getQuadrant(el)
+      console.log(quad)
+
       // do the check
       // mark the quadrant as done
     }
@@ -146,20 +178,51 @@
   class QuadrantCache {
     static cache = {}
 
-    static key (xNum, yNum) {
-      return `[${xNum},${yNum}]`
+    static key (el) {
+      const row = el.dataset.row
+      const col = el.dataset.col
+      return `[${row},${col}]`
     }
 
-    static getQuadrant (xNum, yNum) {
-      const key = QuadrantCache.key(xNum, yNum)
+    // static getQuadrant (xNum, yNum) {
+    //   const key = QuadrantCache.key(xNum, yNum)
 
-      if (key in QuadrantCache.cache) {
-        return QuadrantCache.cache[key]
-      } else {
-        const quadrant = new Quadrant(xNum, yNum)
-        QuadrantCache.cache[key] = quadrant
-        return quadrant
-      }
+    //   if (key in QuadrantCache.cache) {
+    //     return QuadrantCache.cache[key]
+    //   } else {
+    //     const quadrant = new Quadrant(xNum, yNum)
+    //     QuadrantCache.cache[key] = quadrant
+    //     return quadrant
+    //   }
+    // }
+
+    static makeQuadrant (el) {
+      const key = QuadrantCache.key(el)
+      const quadrant = new Quadrant(el)
+      QuadrantCache.cache[key] = quadrant
+      el.dataset.key = key
+      return quadrant
+    }
+
+    static getQuadrant (el) {
+      const key = el.dataset.key
+      return QuadrantCache.cache[key]
+    }
+
+    static getQuadrantRight (el) {
+      const row = parseInt(el.dataset.row)
+      const col = parseInt(el.dataset.col)
+
+      const quad = document.querySelector(`.quadrant[data-row="${row}"][data-col="${col + 1}"]`)
+      return quad
+    }
+
+    static getQuadrantBottom (el) {
+      const row = parseInt(el.dataset.row)
+      const col = parseInt(el.dataset.col)
+
+      const quad = document.querySelector(`.quadrant[data-row="${row + 1}"][data-col="${col}"]`)
+      return quad
     }
 
     static getByEl (el) {
@@ -171,6 +234,10 @@
     // gameBoard.querySelectorAll('.quadrant').forEach((quadrant) => {
     //   QuadrantCache.getQuadrant(quadrant.dataset.row, quadrant.dataset.col)
     // })
+
+    gameBoard.querySelectorAll('.quadrant').forEach((quad) => {
+      QuadrantCache.makeQuadrant(quad)
+    })
   }
 
   function eventListeners (gameBoard) {
@@ -181,15 +248,13 @@
           console.log('line already filled')
         } else {
           target.classList.add('filled')
-          let quads = Line.getAssociatedQuadrants(target)
-          for (quad in quads) {
+          const quads = Line.getAssociatedQuadrants(target)
+          quads.forEach((quad) => {
             Quadrant.checkIfComplete(quad)
-          }
+          })
           didWeWin()
         }
       }
-
-      console.log(e)
     })
   }
 
