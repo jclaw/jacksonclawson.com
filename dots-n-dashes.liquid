@@ -4,8 +4,14 @@ layout: layout.liquid
 {% js %}{% include "js/dots-n-dashes.js" %}{% endjs %}
 {% css %}{% include "css/dots-n-dashes.css" %}{% endcss %}
 
-<div class="container">
-    <!-- <canvas id="tutorial" width="2000" height="2000"></canvas> -->
+<div class="load-screen" style="display: none">
+    <button class="new-game">New game</button><br>
+    Or load game:
+    <input type="text">
+    <button class="load-game">Load game</button>
+</div>
+
+<div class="game" style="display: none">
     <div id="score-board">
         Player 1: <span class="player0">0</span><br>
         Player 2: <span class="player1">0</span>

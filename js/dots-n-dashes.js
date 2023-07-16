@@ -1,8 +1,11 @@
 (function () {
   window.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('game-board')
-    init(gameBoard)
-    eventListeners(gameBoard)
+    const gameKeyInURL = false
+    if (gameKeyInURL) {
+      loadGameFromServer(gameKeyInURL)
+    } else {
+      initLoadScreen()
+    }
   })
 
   let TURN_TICKER = 0
@@ -139,6 +142,45 @@
       this.player0El.textContent = this.points[0]
       this.player1El.textContent = this.points[1]
     }
+  }
+
+  function initLoadScreen () {
+    const loadScreen = document.querySelector('.load-screen')
+    const newGameButton = loadScreen.querySelector('.new-game')
+    const loadGameButton = loadScreen.querySelector('.load-game')
+    const loadGameField = loadScreen.querySelector('input')
+
+    newGameButton.addEventListener('click', () => {
+      // TODO
+      // ask server for new key
+      // redirect user to game URL in waiting state
+      // give user the invite URL
+      // set up WebSocket (?) to watch for the event when the other player opens the link
+
+      startGame()
+      loadScreen.style.display = 'none'
+    })
+
+    loadGameButton.addEventListener('click', () => {
+      // TODO: validation and error states
+      loadGameFromServer(loadGameField.value)
+      loadScreen.style.display = 'none'
+    })
+
+    loadScreen.style.display = 'block'
+  }
+
+  function loadGameFromServer (gameKey) {
+    // TODO
+    let gameData
+    startGame(gameData)
+  }
+
+  function startGame (gameData = null) {
+    const gameBoard = document.getElementById('game-board')
+    init(gameBoard)
+    eventListeners(gameBoard)
+    document.querySelector('.game').style.display = 'block'
   }
 
   function init (gameBoard) {
