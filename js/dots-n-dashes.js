@@ -70,7 +70,7 @@
       const complete = filter.length === 4
 
       if (complete) {
-        let playerClass = PLAYER_CLASSES[TURN_TICKER]
+        const playerClass = PLAYER_CLASSES[TURN_TICKER]
         el.classList.remove(...PLAYER_CLASSES)
         el.classList.add('complete', playerClass)
         POINTS.addPoint(TURN_TICKER)
