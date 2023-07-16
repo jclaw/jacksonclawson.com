@@ -1,90 +1,16 @@
 (function () {
   window.addEventListener('DOMContentLoaded', () => {
-    // const canvas = document.getElementById("tutorial");
-    // draw(canvas);
-    // eventListeners(canvas);
-
     const gameBoard = document.getElementById('game-board')
     init(gameBoard)
     eventListeners(gameBoard)
   })
 
-  const CANVAS_SIZE_PIXELS = 2000
-  const MARGIN = 40
-  const BOARD_SIZE = 10
-  const PIXELS_PER_SQUARE = (CANVAS_SIZE_PIXELS - MARGIN * 2) / BOARD_SIZE
-  // const BOARD_SIZE_PIXELS = BOARD_SIZE * PIXELS_PER_SQUARE
-  const BOARD_START_X = MARGIN
-  const BOARD_START_Y = MARGIN
   let TURN_TICKER = 0
   const PLAYER_CLASSES = ['player0', 'player1']
   let POINTS
 
-  class Dot {
-    constructor (xNum, yNum) {
-      this.xNum = xNum
-      this.yNum = yNum
-      this.x = BOARD_START_X + xNum * PIXELS_PER_SQUARE
-      this.y = BOARD_START_Y + yNum * PIXELS_PER_SQUARE
-    }
-
-    distanceFrom (dot) {
-      return [Math.abs(dot.xNum - this.xNum), Math.abs(dot.yNum - this.yNum)]
-    }
-
-    maxDistanceFrom (dot) {
-      return Math.max(...this.distanceFrom(dot))
-    }
-
-    print () {
-      return DotCache.key(this.xNum, this.yNum)
-    }
-  }
-
-  class DotCache {
-    static cache = {}
-
-    static key (xNum, yNum) {
-      return `[${xNum},${yNum}]`
-    }
-
-    static getDot (xNum, yNum) {
-      const key = DotCache.key(xNum, yNum)
-
-      if (key in DotCache.cache) {
-        return DotCache.cache[key]
-      } else {
-        const dot = new Dot(xNum, yNum)
-        DotCache.cache[key] = dot
-        return dot
-      }
-    }
-  }
-
-  const LINE_STATES = ['hidden', 'hovered', 'filled']
   class Line {
-    constructor (start, end) {
-      if (!(start instanceof Dot && end instanceof Dot)) {
-        throw new Error('Variable is not an instance of Dot class')
-      }
-
-      if (start.maxDistanceFrom(end) > 1) {
-        throw new Error('Dots are too far apart')
-      }
-
-      this.start = start
-      this.end = end
-      this.state = 'hidden'
-    }
-
-    setState (newState) {
-      if (LINE_STATES.includes(newState)) {
-        this.state = newState
-      }
-    }
-
     static getAssociatedQuadrants (el) {
-      // el should be part of this class instance already instead of passed in...
       const quad1 = el.parentElement
 
       let row = quad1.dataset.row
@@ -104,40 +30,7 @@
     }
   }
 
-  class LineCache {
-    static cache = {}
-
-    static key (start, end) {
-      return `${start.print()},${end.print()}`
-    }
-
-    static getLine (start, end) {
-      const key = LineCache.key(start, end)
-
-      if (key in LineCache.cache) {
-        return LineCache.cache[key]
-      } else {
-        const line = new Line(start, end)
-        LineCache.cache[key] = line
-        return line
-      }
-    }
-  }
-
   class Quadrant {
-    // constructor (xNum, yNum) {
-    //   this.xNum = xNum
-    //   this.yNum = yNum
-    //   this.NW = DotCache.getDot(xNum, yNum)
-    //   this.NE = DotCache.getDot(xNum + 1, yNum)
-    //   this.SW = DotCache.getDot(xNum, yNum + 1)
-    //   this.SE = DotCache.getDot(xNum + 1, yNum + 1)
-    //   this.top = LineCache.getLine(this.NW, this.NE)
-    //   this.right = LineCache.getLine(this.NE, this.SE)
-    //   this.bottom = LineCache.getLine(this.SE, this.SW)
-    //   this.left = LineCache.getLine(this.SW, this.NW)
-    // }
-
     constructor (el) {
       this.el = el
       const row = el.dataset.row
@@ -161,11 +54,6 @@
       }
 
       this.lines = [this.left, this.top, this.right, this.bottom]
-
-      // this.top = LineCache.getLine(this.NW, this.NE)
-      // this.right = LineCache.getLine(this.NE, this.SE)
-      // this.bottom = LineCache.getLine(this.SE, this.SW)
-      // this.left = LineCache.getLine(this.SW, this.NW)
     }
 
     static markIfComplete (el) {
@@ -190,9 +78,6 @@
 
       console.log(`complete: ${complete}`)
       return complete
-
-      // do the check
-      // mark the quadrant as done
     }
   }
 
@@ -204,18 +89,6 @@
       const col = el.dataset.col
       return `[${row},${col}]`
     }
-
-    // static getQuadrant (xNum, yNum) {
-    //   const key = QuadrantCache.key(xNum, yNum)
-
-    //   if (key in QuadrantCache.cache) {
-    //     return QuadrantCache.cache[key]
-    //   } else {
-    //     const quadrant = new Quadrant(xNum, yNum)
-    //     QuadrantCache.cache[key] = quadrant
-    //     return quadrant
-    //   }
-    // }
 
     static makeQuadrant (el) {
       const key = QuadrantCache.key(el)
@@ -245,10 +118,6 @@
       const quad = document.querySelector(`.quadrant[data-row="${row + 1}"][data-col="${col}"]`)
       return quad
     }
-
-    static getByEl (el) {
-      return QuadrantCache.getQuadrant(el.dataset.row, el.dataset.col)
-    }
   }
 
   class Points {
@@ -261,22 +130,18 @@
       this.player1El = el.querySelector('.player1')
     }
 
-    addPoint(player) {
+    addPoint (player) {
       this.points[player]++
       this.updateDom()
     }
 
-    updateDom() {
+    updateDom () {
       this.player0El.textContent = this.points[0]
       this.player1El.textContent = this.points[1]
     }
   }
 
   function init (gameBoard) {
-    // gameBoard.querySelectorAll('.quadrant').forEach((quadrant) => {
-    //   QuadrantCache.getQuadrant(quadrant.dataset.row, quadrant.dataset.col)
-    // })
-
     POINTS = new Points(document.querySelector('#score-board'))
 
     gameBoard.querySelectorAll('.quadrant').forEach((quad) => {
@@ -291,7 +156,7 @@
         if (target.classList.contains('filled')) {
           console.log('line already filled')
         } else {
-          let playerClass = PLAYER_CLASSES[TURN_TICKER]
+          const playerClass = PLAYER_CLASSES[TURN_TICKER]
           target.classList.remove(...PLAYER_CLASSES)
           target.classList.add('filled', playerClass)
           const quads = Line.getAssociatedQuadrants(target)
@@ -306,7 +171,7 @@
             switchTurns()
           }
 
-          let weDid = didWeWin()
+          const weDid = didWeWin()
           if (weDid) {
             console.log('game over!')
           } else {
@@ -319,7 +184,6 @@
 
   function switchTurns () {
     TURN_TICKER = Math.abs(TURN_TICKER - 1)
-    
     const whoseTurnEl = document.querySelector('.whose-turn')
     const [player0El, player1El] = whoseTurnEl.querySelectorAll('span')
 
@@ -335,43 +199,4 @@
   function didWeWin () {
     return document.querySelectorAll('.quadrant:not(.complete)').length === 0
   }
-
-  // function draw(canvas) {
-  //   if (canvas.getContext) {
-  //     const ctx = canvas.getContext("2d");
-
-  //     for (let i = 0; i < BOARD_SIZE + 1; i++) {
-  //       for (let j = 0; j < BOARD_SIZE + 1; j++) {
-  //         ctx.beginPath();
-  //         let x = BOARD_START_X + i * PIXELS_PER_SQUARE
-  //         let y = BOARD_START_Y + j * PIXELS_PER_SQUARE
-
-  //         ctx.arc(x, y, CIRCLE_RADIUS, 0, Math.PI * 2, true);
-  //         ctx.fill();
-  //       }
-  //     }
-  //   }
-  // }
-
-  // function eventListeners(canvas) {
-  //   canvas.addEventListener('click', (e) => {
-  //     let [start, end] = detectLine(e.offsetX, e.offsetY)
-  //     drawLine('click', start, end);
-  //   })
-  // }
-
-  // function detectLine(x, y) {
-  //   console.log(x, y);
-  //   return [Point.new(1, 1), Point.new(1, 2)]
-  // }
-
-  // function drawLine(type, startPoint, endPoint) {
-  //   // console.log(start, end);
-
-  //   const ctx = canvas.getContext("2d");
-  //   ctx.beginPath();
-  //   ctx.moveTo(startPoint.x, startPoint.y);
-  //   ctx.lineTo(endPoint.x, endPoint.y);
-  //   ctx.closePath();
-  // }
 })()
