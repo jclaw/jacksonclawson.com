@@ -1,6 +1,6 @@
 (function () {
   window.addEventListener('DOMContentLoaded', () => {
-    const gameKeyInURL = false
+    const gameKeyInURL = false // TODO
     if (gameKeyInURL) {
       loadGameFromServer(gameKeyInURL)
     } else {
@@ -171,8 +171,7 @@
   }
 
   function loadGameFromServer (gameKey) {
-    // TODO
-    let gameData
+    let gameData // TODO
     startGame(gameData)
   }
 
