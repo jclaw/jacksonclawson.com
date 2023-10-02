@@ -12,4 +12,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget('css/')
   eleventyConfig.addWatchTarget('js/')
+
+  eleventyConfig.addCollection('projectsByPriority', (collection) =>
+    collection.getFilteredByGlob('projects/**/*.md').sort((a, b) => {
+      if (a.data.priority > b.data.priority) return -1
+      else if (a.data.priority < b.data.priority) return 1
+      else return 0
+    })
+  )
 }
