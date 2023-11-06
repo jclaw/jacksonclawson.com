@@ -1,0 +1,12 @@
+main > section {
+    display: grid;
+    grid-template-columns: 33% 1fr;
+    gap: 3rem;
+    padding: 0 var(--page-margin);
+}
+main > section .image-column img {
+    margin-bottom: 2rem;
+}
+main > section .image-column img.outline {
+    border: 1px solid var(--img-outline);
+}

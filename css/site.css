@@ -1,5 +1,8 @@
 body {
     font-family: 'Rubik', sans-serif;
+    --page-margin: 3rem;
+
+    --img-outline: #e5e5e5;
 }
 
 h1,h2 {
