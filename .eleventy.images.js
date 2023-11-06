@@ -31,7 +31,9 @@ module.exports = function (eleventyConfig) {
       // based on this: https://github.com/11ty/eleventy-img/blob/46fe08739c70326bab34bbb5208b6c91891d38be/generate-html.js#L19
       const newFile = src.split('/')[1]
       fs.copyFile(file, `${outputDir}${newFile}`, (err) => {
-        throw new Error(err)
+        if (err) {
+          throw new Error(err)
+        }
       })
       return `<img src="/img/${newFile}" alt="${alt}" />`;
     } else {
