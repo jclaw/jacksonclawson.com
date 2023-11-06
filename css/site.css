@@ -13,7 +13,6 @@ h1 {
 h3 {
     font-weight: 500;
     font-size: 28px;
-    margin: 0;
 }
 
 a {
@@ -24,29 +23,13 @@ a {
 p {
     line-height: 26px;
     font-size: 18px;
+    margin: 1em 0;
 }
 
-* {
-    box-sizing: border-box;
+img {
+    height: auto;
 }
 
-
-.site-header {
-    padding: 0 24px;
-}
-.site-header h1 {
-    display: inline-block;
-    margin-top: 0px;
-}
-
-#arrow-right {
-    fill: #81B449;
-    opacity: 1;
-    display: inline-block;
-    margin-bottom: 2px;
-    margin-right: -4px;
-    margin-left: -27px;
-}
 
 @media only screen and (min-width: 768px) {
     h1 {
@@ -55,9 +38,5 @@ p {
 
     h3 {
         font-size: 35px;
-    }
-
-    #arrow-right {
-        margin-bottom: 6px;
     }
 }

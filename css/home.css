@@ -1,5 +1,23 @@
+.site-header {
+    padding: 0 24px;
+}
+.site-header h1 {
+    display: inline-block;
+    margin-top: 0px;
+}
+
+#arrow-right {
+    fill: #81B449;
+    opacity: 1;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: -4px;
+    margin-left: -27px;
+}
+
+
 .container {
-    padding: 40px 0;
+    padding: 40px 8px;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -26,6 +44,10 @@
     position: absolute;
     margin-left: -20px;
     margin-top: -6px;
+}
+
+h1 {
+    margin-bottom: 1rem;
 }
 
 .ending p {
@@ -63,5 +85,11 @@
 @media only screen and (min-width: 561px) {
     .container > .square {
         margin-left: 530px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #arrow-right {
+        margin-bottom: 6px;
     }
 }
