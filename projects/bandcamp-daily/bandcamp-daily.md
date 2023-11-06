@@ -5,7 +5,6 @@ priority: 1
 
 <section>
     <div class="text-column">
-        <p><a href="https://daily.bandcamp.com">view site</a></p>
         <p>
             The Bandcamp Daily is the editorial publication arm of Bandcamp that spotlights the best, most interesting, and strangest music on the platform from across the globe. It’s a treasure trove of wonderful writing and careful curation. The humans that run it are brave and gifted explorers of the Bandcamp-verse. Yes, that’s right — music curation by real humans :)
         </p>
@@ -20,6 +19,7 @@ priority: 1
                 <li>Expose many more opportunities for exploring more articles: view-all menu, franchises, pagination, contributors, genres</li>
             </ul>
         </p>
+        <p><a href="https://daily.bandcamp.com" class="cta">view site</a></p>
     </div>
     <div class="image-column">
         {% image "./bandcamp-navigator-list-square.jpg", "Screenshot of an article on the Bandcamp Daily called 'Bandcamp Navigator, September 2023'", "200vw", "outline" %}

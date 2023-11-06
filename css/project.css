@@ -4,6 +4,10 @@ main > section {
     gap: 3rem;
     padding: 0 var(--page-margin);
 }
+main > section .text-column .cta {
+    margin-top: 1rem;
+}
+
 main > section .image-column img {
     margin-bottom: 2rem;
 }
