@@ -13,6 +13,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('css/')
   eleventyConfig.addWatchTarget('js/')
 
+  eleventyConfig.setServerOptions({
+    liveReload: false
+  })
+
   eleventyConfig.addCollection('projectsByPriority', (collection) =>
     collection.getFilteredByGlob('projects/**/*.md').sort((a, b) => {
       if (a.data.priority > b.data.priority) return -1
