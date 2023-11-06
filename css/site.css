@@ -3,6 +3,7 @@ body {
     --page-margin: 3rem;
 
     --img-outline: #e5e5e5;
+    --img-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 h1,h2 {

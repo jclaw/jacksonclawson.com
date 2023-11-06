@@ -8,5 +8,6 @@ main > section .image-column img {
     margin-bottom: 2rem;
 }
 main > section .image-column img.outline {
-    border: 1px solid var(--img-outline);
+/*    border: 1px solid var(--img-outline);*/
+    box-shadow: var(--img-box-shadow);
 }
