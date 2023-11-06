@@ -7,7 +7,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginBundle)
   eleventyConfig.addPlugin(pluginImages)
 
-  // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy('img')
 
   eleventyConfig.addWatchTarget('css/')
