@@ -26,9 +26,6 @@ module.exports = function (eleventyConfig) {
       if(alt === undefined) {
         throw new Error(`Missing \`alt\` attribute on eleventy-img shortcode from: ${src}`);
       }
-      // TODO
-      // use fs.copyFile to manually copy this file to your output dir
-      // based on this: https://github.com/11ty/eleventy-img/blob/46fe08739c70326bab34bbb5208b6c91891d38be/generate-html.js#L19
       const newFile = src.split('/')[1]
       fs.copyFile(file, `${outputDir}${newFile}`, (err) => {
         if (err) {
@@ -51,7 +48,6 @@ module.exports = function (eleventyConfig) {
         decoding: 'async'
       }
 
-      // You bet we throw an error on a missing alt (alt="" works okay)
       return Image.generateHTML(metadata, imageAttributes)
     }
   })
