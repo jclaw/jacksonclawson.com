@@ -4,7 +4,9 @@ const pluginBundle = require('@11ty/eleventy-plugin-bundle')
 const pluginImages = require('./.eleventy.images.js')
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginBundle)
+  eleventyConfig.addPlugin(pluginBundle, {
+    bundles: ["basecss"]
+  });
   eleventyConfig.addPlugin(pluginImages)
 
   eleventyConfig.addPassthroughCopy('img')

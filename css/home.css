@@ -103,4 +103,12 @@ p {
     #arrow-right {
         margin-bottom: 6px;
     }
+
+    h1 {
+        font-size: 60px;
+    }
+
+    h3 {
+        font-size: 35px;
+    }
 }

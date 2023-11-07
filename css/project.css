@@ -2,7 +2,10 @@ main > section {
     display: grid;
     grid-template-columns: 33% 1fr;
     gap: 3rem;
-    padding: 0 var(--page-margin);
+    padding: 0 var(--page-margin) 8rem;
+}
+main > section .text-column li {
+    margin-bottom: 0.5rem;
 }
 main > section .text-column .cta {
     margin-top: 1rem;
@@ -11,7 +14,7 @@ main > section .text-column .cta {
 main > section .image-column img {
     margin-bottom: 2rem;
 }
-main > section .image-column img.outline {
+main > section .outline {
 /*    border: 1px solid var(--img-outline);*/
     box-shadow: var(--img-box-shadow);
 }

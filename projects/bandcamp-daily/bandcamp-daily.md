@@ -2,14 +2,30 @@
 title: "Bandcamp Daily"
 priority: 1
 ---
-
+<style>
+    .older-posts {
+        margin: 0 auto;
+        margin-top: 4rem;
+        max-width: 25rem;
+    }
+    .older-posts div {
+        max-height: 6.5rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    main > section .image-column .older-posts img {
+        margin: 0;
+    }
+</style>
 <section>
     <div class="text-column">
         <p>
             The Bandcamp Daily is the editorial publication arm of Bandcamp that spotlights the best, most interesting, and strangest music on the platform from across the globe. It’s a treasure trove of wonderful writing and careful curation. The humans that run it are brave and gifted explorers of the Bandcamp-verse. Yes, that’s right — music curation by real humans :)
         </p>
         <p>
-            I was the lead engineer on the team for the redesign effort. I built the site using a third-party headless CMS to power a frontend built within the Bandcamp ecosystem. The redesign accomplished the following things:
+            I was the lead engineer on the team for the redesign effort. I built the site using a third-party headless CMS to power a frontend built within the Bandcamp ecosystem. The redesign accomplished the following:
             <ul>
                 <li>Ability to wishlist</li>
                 <li>Ability to follow artist</li>
@@ -24,8 +40,11 @@ priority: 1
     <div class="image-column">
         {% image "./bandcamp-navigator-list-square.jpg", "Screenshot of an article on the Bandcamp Daily called 'Bandcamp Navigator, September 2023'", "200vw", "outline" %}
         {% image "./player.jpg", "", "200vw", "outline" %}
-    </div>
-    <div class="center">
-        {% image "./older-posts.gif", "", "200vw", "outline" %}
+        <figure class="older-posts">
+          <div class="outline">
+              {% image "./older-posts.gif", "", "200vw" %}
+          </div>
+          <figcaption>a fun hover effect :)</figcaption>
+        </figure>
     </div>
 </section>
