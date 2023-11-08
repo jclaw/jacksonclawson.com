@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
       return `<img src="/img/${newFile}" alt="${alt}" class="${klass}" />`;
     } else {
       const metadata = await Image(file, {
-        widths: [300, 600, 900, 1200],
+        widths: [750, 1300, 1900, 2400, 2700, 3300],
         formats: ['avif', 'jpeg'],
         outputDir: outputDir
       })

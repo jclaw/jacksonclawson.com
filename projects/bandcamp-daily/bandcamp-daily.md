@@ -35,14 +35,18 @@ priority: 1
                 <li>Expose many more opportunities for exploring more articles: view-all menu, franchises, pagination, contributors, genres</li>
             </ul>
         </p>
+        <p>
+            This was a gratifying project for me. We took the existing archive of Bandcamp Daily articles, gave them a new look and feel, and made them far easier to engage with and more browsable. It was invigorating to take the wonderful body of work and make it sing.
+        </p>
         <p><a href="https://daily.bandcamp.com" class="cta">view site</a></p>
     </div>
     <div class="image-column">
-        {% image "./bandcamp-navigator-list-square.jpg", "Screenshot of an article on the Bandcamp Daily called 'Bandcamp Navigator, September 2023'", "200vw", "outline" %}
-        {% image "./player.jpg", "", "200vw", "outline" %}
+        {% image "./bandcamp-navigator-list-square.jpg", "Screenshot of an article on the Bandcamp Daily called 'Bandcamp Navigator, September 2023'", "100vw", "outline" %}
+        {% image "./player.jpg", "", "100vw", "outline" %}
+        {% image "./player-mobile.jpeg", "", "100vw", "outline" %}
         <figure class="older-posts">
           <div class="outline">
-              {% image "./older-posts.gif", "", "200vw" %}
+              {% image "./older-posts.gif", "", "100vw" %}
           </div>
           <figcaption>a fun hover effect :)</figcaption>
         </figure>
