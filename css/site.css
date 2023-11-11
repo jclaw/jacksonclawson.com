@@ -53,3 +53,16 @@ figcaption {
     color: white;
 }
 
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+header nav li {
+    padding: 1rem;
+}
+
+header nav li.active {
+    font-weight: bold;
+}
