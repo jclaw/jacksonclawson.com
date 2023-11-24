@@ -19,7 +19,12 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addCollection('projectsByPriority', (collection) =>
-    collection.getFilteredByGlob('projects/**/*.liquid').sort((a, b) => {
+    collection.getFilteredByGlob('projects/**/*.liquid').map((project) => {
+      let split = project.inputPath.split('/')
+      let projectFolder = split[2]
+      project.imgPath = `./projects/${projectFolder}`
+      return project
+    }).sort((a, b) => {
       if (a.data.priority > b.data.priority) return -1
       else if (a.data.priority < b.data.priority) return 1
       else return 0

@@ -2,6 +2,22 @@
 layout: layout-2023.liquid
 pageName: "projects"
 ---
-{% for project in collections.projectsByPriority %}
-    <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
-{% endfor %}
+{% css %}{% include "css/projects.css" %}{% endcss %}
+<main>
+    <section>
+        {% for project in collections.projectsByPriority %}
+            <div>
+                <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
+
+                {% if project.data.thumb %}
+                    {% imagepaired "Thumbnail image", "20vw", "outline" %}
+                        {
+                            "thumb": "{{project.data.thumb}}",
+                            "imgPath": "{{project.imgPath}}"
+                        }
+                    {% endimagepaired %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+</main>

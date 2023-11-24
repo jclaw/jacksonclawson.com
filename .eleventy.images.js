@@ -5,21 +5,16 @@ const unsupportedFormats = ['.gif'];
 const outputDir = './_site/img/'
 
 module.exports = function (eleventyConfig) {
-  function relativeToInputPath (inputPath, relativeFilePath) {
-    const split = inputPath.split('/')
-    split.pop()
-
-    return path.resolve(split.join(path.sep), relativeFilePath)
-  }
   function relativeToImgPath (relativeFilePath) {
     const split = relativeFilePath.split('/')
 
     return `/img/${split[1]}`
   }
 
-  eleventyConfig.addShortcode('image', async function imageShortcode (src, alt, sizes, klass) {
+  async function imageShortcode(inputPath, src, alt, sizes, klass) {
     // Full list of formats here: https://www.11ty.dev/docs/plugins/image/#output-formats
-    const file = relativeToInputPath(this.page.inputPath, src)
+    const file = path.resolve(inputPath, src)
+
     const { ext } = path.parse(src);
 
     if (unsupportedFormats.includes(ext)) {
@@ -50,5 +45,20 @@ module.exports = function (eleventyConfig) {
 
       return Image.generateHTML(metadata, imageAttributes)
     }
+  }
+
+  eleventyConfig.addPairedShortcode('imagepaired', async function (content, alt, sizes, klass) {
+    const json = JSON.parse(content.trim())
+    const src = json.thumb
+    const imgPath = json.imgPath
+    return imageShortcode(imgPath, src, alt, sizes, klass)
+  })
+
+  eleventyConfig.addShortcode('image', async function (src, alt, sizes, klass) {
+    let inputPath = this.page.inputPath
+    let split = inputPath.split('/')
+    split.pop()
+    inputPath = split.join(path.sep)
+    return imageShortcode(inputPath, src, alt, sizes, klass)
   })
 }

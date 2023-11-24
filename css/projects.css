@@ -1,0 +1,6 @@
+main section div img {
+    width: 400px;
+}
+img.outline {
+    border: 1px solid var(--img-outline);
+}
