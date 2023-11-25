@@ -66,3 +66,22 @@ header nav li {
 header nav li.active {
     font-weight: bold;
 }
+
+.mobile {
+    display: none;
+}
+.desktop {
+    display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    :root {
+        --page-margin: 1rem;
+    }
+    .mobile {
+        display: block;
+    }
+    .desktop {
+        display: none;
+    }
+}

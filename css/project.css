@@ -18,3 +18,9 @@ main > section .outline {
 /*    border: 1px solid var(--img-outline);*/
     box-shadow: var(--img-box-shadow);
 }
+
+@media only screen and (max-width: 768px) {
+    main > section {
+        grid-template-columns: 1fr;
+    }
+}
