@@ -2,12 +2,20 @@ const Image = require('@11ty/eleventy-img')
 const pluginBundle = require('@11ty/eleventy-plugin-bundle')
 
 const pluginImages = require('./.eleventy.images.js')
+const pluginYouTube = require("eleventy-plugin-youtube-embed");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginBundle, {
     bundles: ["basecss"]
   });
   eleventyConfig.addPlugin(pluginImages)
+  eleventyConfig.addPlugin(pluginYouTube, {
+    modestBranding: true,
+    lite: {
+      responsive: true,
+      thumbnailQuality: 'maxresdefault'
+    }
+  })
 
   eleventyConfig.addPassthroughCopy('img')
 
@@ -31,3 +39,4 @@ module.exports = function (eleventyConfig) {
     })
   )
 }
+
