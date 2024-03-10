@@ -14,6 +14,9 @@ main > section .text-column .cta {
 main > section .image-column img {
     margin-bottom: 2rem;
 }
+main > section .image-column .eleventy-plugin-vimeo-embed {
+    padding-top: 65% !important;
+}
 main > section .outline {
 /*    border: 1px solid var(--img-outline);*/
     box-shadow: var(--img-box-shadow);

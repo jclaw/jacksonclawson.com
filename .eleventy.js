@@ -3,12 +3,14 @@ const pluginBundle = require('@11ty/eleventy-plugin-bundle')
 
 const pluginImages = require('./.eleventy.images.js')
 const pluginYouTube = require("eleventy-plugin-youtube-embed");
+const embedVimeo = require("eleventy-plugin-vimeo-embed");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginBundle, {
     bundles: ["basecss"]
   });
   eleventyConfig.addPlugin(pluginImages)
+  eleventyConfig.addPlugin(embedVimeo)
   eleventyConfig.addPlugin(pluginYouTube, {
     modestBranding: true,
     lite: {
@@ -26,8 +28,12 @@ module.exports = function (eleventyConfig) {
     liveReload: false
   })
 
-  eleventyConfig.addCollection('projectsByPriority', (collection) =>
-    collection.getFilteredByGlob('projects/**/*.liquid').map((project) => {
+  eleventyConfig.addCollection('projectsByPriority', (collection) => {
+    let projects = []
+    projects.push(...collection.getFilteredByGlob('projects/**/*.liquid'))
+    projects.push(...collection.getFilteredByGlob('projects/**/*.md'))
+
+    const result = projects.map((project) => {
       let split = project.inputPath.split('/')
       let projectFolder = split[2]
       project.imgPath = `./projects/${projectFolder}`
@@ -37,6 +43,7 @@ module.exports = function (eleventyConfig) {
       else if (a.data.priority < b.data.priority) return 1
       else return 0
     })
-  )
+    return result
+  })
 }
 
