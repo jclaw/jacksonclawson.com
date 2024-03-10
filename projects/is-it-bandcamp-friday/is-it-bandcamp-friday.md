@@ -11,7 +11,15 @@ thumb: "waiting-state-square.jpg"
         <p>
             After the first couple of Bandcamp Fridays, it became clear that fans were confused about what time the program actually started and ended. A designer and I built this mini-site to demystify the timezone confusion and show a countdown, and have some fun with it at the same time :)
         </p>
+        <div class="contributors">
+            <p>Contributors</p>
+            <p>
+                Engineer: Jackson Clawson<br>
+                Designer: Emma Shore<br>
+            </p>
+        </div>
         <p><a href="https://isitbandcampfriday.com/" class="cta">view site</a></p>
+
     </div>
     <div class="image-column">
         <p>https://vimeo.com/888147328</p>
