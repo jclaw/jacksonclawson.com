@@ -66,36 +66,24 @@ p {
 }
 
 .container > .square {
-    margin-left: 86px;
+    margin-left: 135px;
 }
 
 @media only screen and (min-width: 345px) {
     .container > .square {
-        margin-left: 315px;
+        margin-left: 135px;
     }
 }
 
-@media only screen and (min-width: 378px) {
+@media only screen and (min-width: 382px) {
     .container > .square {
-        margin-left: 210px;
-    }
-}
-
-@media only screen and (min-width: 415px) {
-    .container > .square {
-        margin-left: 175px;
-    }
-}
-
-@media only screen and (min-width: 502px) {
-    .container > .square {
-        margin-left: 86px;
+        margin-left: 349px;
     }
 }
 
 @media only screen and (min-width: 561px) {
     .container > .square {
-        margin-left: 530px;
+        margin-left: 352px;
     }
 }
 
