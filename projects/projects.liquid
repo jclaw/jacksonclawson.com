@@ -10,12 +10,14 @@ pageName: "projects"
                 <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
 
                 {% if project.data.thumb %}
-                    {% imagepaired "Thumbnail image", "20vw", "outline" %}
-                        {
-                            "thumb": "{{project.data.thumb}}",
-                            "imgPath": "{{project.imgPath}}"
-                        }
-                    {% endimagepaired %}
+                    <a href="{{ project.url }}">
+                        {% imagepaired "Thumbnail image", "20vw", "outline" %}
+                            {
+                                "thumb": "{{project.data.thumb}}",
+                                "imgPath": "{{project.imgPath}}"
+                            }
+                        {% endimagepaired %}
+                    </a>
                 {% endif %}
             </div>
         {% endfor %}
