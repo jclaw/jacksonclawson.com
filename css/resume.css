@@ -1,0 +1,7 @@
+main {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+@page { size: auto;  margin: 0mm; }
