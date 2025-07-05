@@ -36,8 +36,7 @@
 .square {
     width: 9px;
     height: 9px;
-    background: #81B449;
-    opacity: .8;
+    background: var(--brand-color);
 }
 
 .beginning .square {
