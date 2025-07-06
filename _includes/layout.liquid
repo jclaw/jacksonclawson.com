@@ -4,9 +4,16 @@
         <link rel="shortcut icon" href="/img/favicon.png"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Jackson Clawson</title>
+        {% capture page_title %}
+            {% if title %}
+                {{ title }}
+            {% else %}
+                Jackson Clawson
+            {% endif %}
+        {% endcapture %}
+        <title>{{page_title}}</title>
         <meta name="author" content="Jackson Clawson">
-        <meta name="keywords" content="Portfolio, Designer, Design, Interaction Designer, Software Development, Web Developer, Musician, Jackson Clawson">
+        <meta name="keywords" content="Software Development, Web Developer, Software Engineer, Musician, Jackson Clawson">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Rubik:400,500" rel="stylesheet">
         {% css "base" %}{% include "css/_reset.css" %}{% endcss %}
         {% css "base" %}{% include "css/site.css" %}{% endcss %}
