@@ -1,37 +1,34 @@
-const Image = require('@11ty/eleventy-img')
-const pluginBundle = require('@11ty/eleventy-plugin-bundle')
+import pluginBundle from '@11ty/eleventy-plugin-bundle';
+import pluginImages from './.eleventy.images.js';
+import pluginYouTube from "eleventy-plugin-youtube-embed";
+import embedVimeo from "eleventy-plugin-vimeo-embed";
 
-const pluginImages = require('./.eleventy.images.js')
-const pluginYouTube = require("eleventy-plugin-youtube-embed");
-const embedVimeo = require("eleventy-plugin-vimeo-embed");
-
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginBundle, {
     bundles: ["basecss"]
   });
-  eleventyConfig.addPlugin(pluginImages)
-  eleventyConfig.addPlugin(embedVimeo)
+  eleventyConfig.addPlugin(pluginImages);
+  eleventyConfig.addPlugin(embedVimeo);
   eleventyConfig.addPlugin(pluginYouTube, {
     modestBranding: true,
     lite: {
       responsive: true,
       thumbnailQuality: 'maxresdefault'
     }
-  })
+  });
 
-  eleventyConfig.addPassthroughCopy('img')
-
-  eleventyConfig.addWatchTarget('css/')
-  eleventyConfig.addWatchTarget('js/')
+  eleventyConfig.addPassthroughCopy('img');
+  eleventyConfig.addWatchTarget('css/');
+  eleventyConfig.addWatchTarget('js/');
 
   eleventyConfig.setServerOptions({
     liveReload: false
-  })
+  });
 
   eleventyConfig.addCollection('projectsByPriority', (collection) => {
-    let projects = []
-    projects.push(...collection.getFilteredByGlob('projects/**/*.liquid'))
-    projects.push(...collection.getFilteredByGlob('projects/**/*.md'))
+    let projects = [];
+    projects.push(...collection.getFilteredByGlob('projects/**/*.liquid'));
+    projects.push(...collection.getFilteredByGlob('projects/**/*.md'));
 
     const result = projects.map((project) => {
       let split = project.inputPath.split('/')
@@ -44,6 +41,5 @@ module.exports = function (eleventyConfig) {
       else return 0
     })
     return result
-  })
+  });
 }
-
