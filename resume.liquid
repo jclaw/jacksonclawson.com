@@ -1,6 +1,10 @@
----
-layout: layout.liquid
-title: Jackson_Clawson_Resume_2025
+---js
+{
+  layout: "layout",
+  title: function() {
+    return "Jackson_Clawson_Resume_" + (new Date()).getFullYear();
+  }
+}
 ---
 {% css %}{% include "css/resume.css" %}{% endcss %}
 <main class="grid">
