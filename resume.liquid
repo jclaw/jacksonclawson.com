@@ -2,13 +2,22 @@
 layout: layout.liquid
 ---
 {% css %}{% include "css/resume.css" %}{% endcss %}
-<main>
-  <div class="top">
+<main class="grid">
+  <div class="top grid">
     <h1>Jackson Clawson</h1>
-    Senior Software Engineer<br>
-    <a href="mailto:inbox@jacksonclawson.com">inbox@jacksonclawson.com</a><br>
-    <a href="https://www.linkedin.com/in/jackson-clawson">LinkedIn</a> ·
-    <a href="https://github.com/jacksonbandcamp">Github</a>
+    <div>
+      <p>
+        Senior Software Engineering Lead with 8+ years of experience building first-class, resilient UIs and leading cross-functional redesigns at scale. Product-minded engineer passionate about design systems, accessibility, and the craft of web development.
+      </p>
+    </div>
+    <div>
+      <a href="mailto:inbox@jacksonclawson.com">inbox@jacksonclawson.com</a><br>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/jackson-clawson">LinkedIn</a> ·
+        <a href="https://github.com/jacksonbandcamp">Github</a>
+      </div>
+    </div>
+
   </div>
   <div class="center">
     
@@ -23,63 +32,60 @@ layout: layout.liquid
     <section>
       <h2>Work experience</h2>
       <div>
-        <h3>Bandcamp</h3>
-        <span>May 2017 — Present</span>
-          <h4>Bandcamp Homepage Redesign (2025)</h4>
+        <h3>Bandcamp <span>Senior Engineering Lead</span> <span>May 2017 — Present</span></h3>
+        {% comment %} <p>
+          I’m a Senior Engineering Lead at Bandcamp. Here are some key projects I’ve led.
+        </p> {% endcomment %}
+        
+          <h4>Homepage Redesign (2025)</h4>
           <ul>
-            <li>Increased conversion by X</li>
-            <li>Improved time-to-interactive by X</li>
-            <li>Improved accessibility score by X</li>
-            <li>Frontend & backend migration from legacy monolith to microservices + Vue/TS</li>
+            <li>
+              Increased conversion by X%, improved Lighthouse accessibility score by Y%, improved page speed by Z%
+            </li>
+            <li>Migrated frontend & backend from legacy monolith to microservices + Vue</li>
             <li>Worked closely with design and product with creative problem solving and scoping to identify optimal new UX in tight timeline</li>
-            <li>Introduced major new components and capabilities into our young design system</li>
+            <li>Introduced major new components and capabilities into design system</li>
             <li>Coordinated internal accessibility remediation and testing</li>
           </ul>
 
           <h4>Track-and-Album Page Redesign (2023, mobile web)</h4>
           <p>
-            The Track-and-Album Page is Bandcamp’s most critical product page and the heart of the business. It’s the only place where albums, tracks, and most merch can be purchased on the web. It’s the highest-traffic page on the site and the first stop for most users.
+            The Track-and-Album Page is Bandcamp’s most critical product page and the heart of the business. It’s the only place where albums, tracks, and most merch can be purchased on the web, and is the highest-traffic page on the site.
           </p>
           <ul>
             <li>
-              Migrated the page to microservices infrastructure, unlocking A/B testing, faster deployment, and dramatic performance gains
+              Increased conversion by X%, improved Lighthouse accessibility score by Y%, improved page speed by Z%
             </li>
             <li>
-              Co-designed the new interface alongside product and design; prioritized improved merchandising, modernization, clarity, accessibility (I used to be a designer+dev!)
+              Migrated the page to microservices infrastructure
             </li>
             <li>
-              Increased conversion by X%, improved accessibility by Y%, improved page speed by Z%
-            </li>
-            <li>
-              Tackled extreme complexity: nearly 100 permutations to support artist customization, pricing, downloads, subscriber-only content, bundles, and more, all without prior automated test coverage
+              Tackled extreme complexity: nearly 100 permutations to support artist customization, all without prior automated test coverage
             </li>
             <li>
               Championed accessibility across engineering, product, and design, establishing a new org-wide baseline
             </li>
+            <li>
+              Co-designed the new UI alongside product and design; prioritized improved merchandising, modernization, clarity (I used to be a designer+dev!)
+            </li>
           </ul>
 
           <h4>Bandcamp Daily Redesign (2019)</h4>
-            <p>
-              Bandcamp Daily is the editorial voice of Bandcamp. It’s a home for music discovery, curation, and longform writing, written by real humans.
-            </p>
+          <p>
+            Bandcamp Daily is the editorial voice of Bandcamp. It’s a home for music discovery, curation, and longform writing, written by real humans.
+          </p>
           <ul>
             <li>
-              Led the engineering effort to redesign and rebuild Bandcamp’s editorial publication from a Wordpress-hosted blog into a fully integrated, responsive, and browsable media experience
+              Rebuilt from a Wordpress blog into an integrated, professional publication that increased engagement and aligned with the rest of the platform
             </li>
             <li>
-              Selected and integrated a headless CMS; engineered a custom ingestion pipeline to store and normalize articles (~3,500) into Bandcamp’s infrastructure for performance and site-wide integration of editorial content
+              Selected and integrated a headless CMS; engineered a custom ingestion pipeline to store and normalize articles (~3,500) into Bandcamp’s database to expose editorial content across bandcamp.com
             </li>
             <li>
-              Built custom frontend with a better listening + reading experience, including inline players, wishlisting and following, and deep merch integration
+              Built custom frontend with a better listening + reading experience, including inline players, wishlisting and following, improved browsing
             </li>
             <li>
-              Collaborated with editorial staff to shape workflows and onboard them to new tooling
-            </li>
-            <li>
-              Greatly improved article discovery by exposing ability to browse by franchise, author, and genre
-            </li>
-            <li>
-              Delivered a professional, Bandcamp-branded publication experience that increased engagement and aligned with the rest of the platform
+              Collaborated with editorial staff to shape workflows and onboard them
             </li>
           </ul>
 
@@ -91,8 +97,10 @@ layout: layout.liquid
 
     <section>
       <h2>Education</h2>
-      <h3>B.S. Computer Science, B.S. Human Factors Engineering from Tufts University</h3>
-      <span>September 2013 — May 2017</span>
+      <div>
+        <h3>Tufts University <span>September 2013 — May 2017</span></h3>
+        <p>B.S. Computer Science, B.S. Human Factors Engineering</p>
+      </div>
     </section>
 
   </div>
