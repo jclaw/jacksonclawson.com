@@ -1,39 +1,41 @@
-const path = require('path')
-const Image = require('@11ty/eleventy-img')
-const fs = require('fs');
+import path from 'path';
+import Image from '@11ty/eleventy-img';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
 const unsupportedFormats = ['.gif'];
-const outputDir = './_site/img/'
+const outputDir = './_site/img/';
 
-module.exports = function (eleventyConfig) {
-  function relativeToImgPath (relativeFilePath) {
-    const split = relativeFilePath.split('/')
-
-    return `/img/${split[1]}`
+export default function (eleventyConfig) {
+  function relativeToImgPath(relativeFilePath) {
+    const split = relativeFilePath.split('/');
+    return `/img/${split[1]}`;
   }
 
   async function imageShortcode(inputPath, src, alt, sizes, klass) {
     // Full list of formats here: https://www.11ty.dev/docs/plugins/image/#output-formats
-    const file = path.resolve(inputPath, src)
-
+    const file = path.resolve(inputPath, src);
     const { ext } = path.parse(src);
 
     if (unsupportedFormats.includes(ext)) {
-      if(alt === undefined) {
+      if (alt === undefined) {
         throw new Error(`Missing \`alt\` attribute on eleventy-img shortcode from: ${src}`);
       }
-      const newFile = src.split('/')[1]
+
+      const newFile = src.split('/')[1];
       fs.copyFile(file, `${outputDir}${newFile}`, (err) => {
         if (err) {
-          throw new Error(err)
+          throw new Error(err);
         }
-      })
+      });
+
       return `<img src="/img/${newFile}" alt="${alt}" class="${klass}" />`;
     } else {
       const metadata = await Image(file, {
         widths: [750, 1300, 1900, 2400, 2700, 3300],
         formats: ['avif', 'jpeg'],
         outputDir: outputDir
-      })
+      });
 
       const imageAttributes = {
         class: klass,
@@ -41,24 +43,24 @@ module.exports = function (eleventyConfig) {
         sizes,
         loading: 'lazy',
         decoding: 'async'
-      }
+      };
 
-      return Image.generateHTML(metadata, imageAttributes)
+      return Image.generateHTML(metadata, imageAttributes);
     }
   }
 
   eleventyConfig.addPairedShortcode('imagepaired', async function (content, alt, sizes, klass) {
-    const json = JSON.parse(content.trim())
-    const src = json.thumb
-    const imgPath = json.imgPath
-    return imageShortcode(imgPath, src, alt, sizes, klass)
-  })
+    const json = JSON.parse(content.trim());
+    const src = json.thumb;
+    const imgPath = json.imgPath;
+    return imageShortcode(imgPath, src, alt, sizes, klass);
+  });
 
   eleventyConfig.addShortcode('image', async function (src, alt, sizes, klass) {
-    let inputPath = this.page.inputPath
-    let split = inputPath.split('/')
-    split.pop()
-    inputPath = split.join(path.sep)
-    return imageShortcode(inputPath, src, alt, sizes, klass)
-  })
+    let inputPath = this.page.inputPath;
+    let split = inputPath.split('/');
+    split.pop();
+    inputPath = split.join(path.sep);
+    return imageShortcode(inputPath, src, alt, sizes, klass);
+  });
 }
