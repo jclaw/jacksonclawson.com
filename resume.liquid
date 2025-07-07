@@ -1,0 +1,166 @@
+---js
+{
+  layout: "layout",
+  title: function() {
+    return "Jackson_Clawson_Resume_" + (new Date()).getFullYear();
+  }
+}
+---
+{% css %}{% include "css/resume.css" %}{% endcss %}
+<main class="grid">
+  <div class="top grid">
+    <h1><a href="/">Jackson Clawson</a></h1>
+    <div>
+      <p>
+        Senior Software Engineering Lead with 8+ years of experience building first-class, resilient UIs and leading cross-functional redesigns at scale. Product-minded engineer passionate about design systems, accessibility, and the craft of web development.
+      </p>
+    </div>
+    <div>
+      <a href="mailto:inbox@jacksonclawson.com">inbox@jacksonclawson.com</a><br>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/jackson-clawson">LinkedIn</a> ·
+        <a href="https://github.com/jacksonbandcamp">Github</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="center">
+    
+
+    {% comment %} <section>
+      <h2>About me</h2>
+      <p>
+        I’m a Senior Engineering Lead at Bandcamp, where I build tools that help artists and fans connect through music. I care deeply about the products I work on: how they look, how they feel, how they’re structured under the hood, and how long they’ll last. I believe in knowing a product’s quirks, crafting resilient systems, collaborating closely with teammates to make thoughtful decisions, and shipping early and often.
+      </p>
+    </section> {% endcomment %}
+
+    <section>
+      <h2>Work experience</h2>
+      <div>
+        <h3>Bandcamp <span>Senior Engineering Lead</span> <span>May 2017 — Present</span></h3>
+        {% comment %} <p>
+          I’m a Senior Engineering Lead at Bandcamp. Here are some key projects I’ve led.
+        </p> {% endcomment %}
+        
+          <h4>Homepage Redesign (2025)</h4>
+          <ul>
+            <li>
+              Increased conversion by X%, improved Lighthouse accessibility score by Y%, improved page speed by Z%
+            </li>
+            <li>Migrated frontend & backend from legacy monolith to microservices + Vue</li>
+            <li>Partnered with design and product to identify optimal UX in tight timeline</li>
+            <li>Introduced major new components and capabilities into design system</li>
+            <li>Coordinated internal accessibility remediation and testing</li>
+          </ul>
+
+          <h4>Track-and-Album Page Redesign (2023, mobile web)</h4>
+          <p>
+            The Track-and-Album Page is Bandcamp’s most critical product page and the heart of the business. It’s the only place where albums, tracks, and most merch can be purchased on the web, and is the highest-traffic page on the site.
+          </p>
+          <ul>
+            <li>
+              Increased conversion by X%, improved Lighthouse accessibility score by Y%, improved page speed by Z%
+            </li>
+            <li>
+              Migrated the page to microservices infrastructure
+            </li>
+            <li>
+              Tackled extreme complexity: nearly 100 permutations to support artist customization, all without prior automated test coverage
+            </li>
+            <li>
+              Championed accessibility across engineering, product, and design, establishing new org-wide baseline
+            </li>
+            <li>
+              Design+dev: co-designed new UI alongside product, prioritized improved merchandising, modernization, clarity
+            </li>
+          </ul>
+
+          <h4>Bandcamp Daily Redesign (2019)</h4>
+          <p>
+            Bandcamp Daily is the editorial voice of Bandcamp. It’s a home for music discovery, curation, and longform writing, written by real humans.
+          </p>
+          <ul>
+            <li>
+              Rebuilt from Wordpress blog into integrated, professional publication that increased engagement and aligned with rest of platform
+            </li>
+            <li>
+              Selected and integrated headless CMS; engineered custom ingestion pipeline to store and normalize articles (~3,500) into Bandcamp’s database to expose editorial content across bandcamp.com
+            </li>
+            <li>
+              Built custom frontend with better listening + reading experience, including inline players, wishlisting and following, improved browsing
+            </li>
+            <li>
+              Collaborated with editorial staff to shape workflows and onboard
+            </li>
+          </ul>
+
+          {% comment %} <h4>GDPR compliance (2024)</h4> {% endcomment %}
+        </ul>
+      </div>
+      
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div>
+        <h3>Tufts University <span>September 2013 — May 2017</span></h3>
+        <p>B.S. Computer Science, B.S. Human Factors Engineering</p>
+      </div>
+    </section>
+
+  </div>
+  <div class="sidebar">
+    <section>
+      <h2>Passions & Principles</h2>
+      <ul>
+        <li>Code as craft</li>
+        <li>Measure twice, cut once</li>
+        <li>Semantic & resilient UI</li>
+        <li>Embracing the web platform</li>
+        <li>Design systems</li>
+        <li>Accessibility</li>
+        <li>Automated testing</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Technical Experience</h2>
+      <ul>
+        <li>Estimation and scoping</li>
+        <li>Opportunity/risk assessment</li>
+        <li>Cross-functional collaboration</li>
+        <li>Refactoring</li>
+        <li>SEO</li>
+        <li>Page performance</li>
+        <li>REST, OOP, MVC, component-based</li>
+        <li>Localization</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Technologies</h2>
+      <ul>
+        <li>CSS</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>Vue.js</li>
+        <li>Jest/Vitest</li>
+        <li>Ruby</li>
+        <li>Minitest</li>
+        <li>MySQL</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Other interests</h2>
+      <ul>
+        <li>Keyboard/synth/organ</li>
+        <li>Music production</li>
+        <li>Friendship</li>
+        <li>Laughing</li>
+        <li>Mental health</li>
+        <li>Feminist masculinity</li>
+        <li>Road trips</li>
+        <li>Ice cream</li>
+      </ul>
+    </section>
+  </div>
+</main>

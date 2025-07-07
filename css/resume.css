@@ -1,0 +1,95 @@
+main {
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  max-width: 1184px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  column-gap: 2rem;
+}
+
+h1 a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+}
+
+h3, h4 {
+  font-weight: 600;
+}
+
+section:not(:first-of-type) h2, section h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+section h3 {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+}
+
+.top, .top h1 {
+  grid-column: 1 / -1;
+}
+
+.center {
+  max-width: 680px;
+}
+
+.center span {
+  color: var(--secondary-text-color);
+  font-weight: normal;
+  font-size: var(--font-size-md);
+}
+
+.center div p {
+  margin-top: 0;
+}
+
+.center ul {
+  padding-left: 1.6rem;
+}
+
+.center ul li {
+  margin-bottom: 0.4em;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  main {
+    padding: 2rem 1rem;
+  }
+
+  section h3 {
+    flex-direction: column;;
+  }
+}
+
+
+@page { size: auto;  margin: 0mm; }
+
+@media print {
+  html {
+    font-size: 9pt;
+  }
+  :root {
+    --font-size-md: 9pt;
+  }
+  main {
+    padding-block: 3rem;
+  }
+}
