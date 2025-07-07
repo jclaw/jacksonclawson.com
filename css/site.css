@@ -1,15 +1,30 @@
 :root {
     --page-margin: 3rem;
-    --brand-color: #7c9a5b;
-    --brand-color-text: #5C8135;
-    --primary-text-color: #111111;
-    --secondary-text-color: #6f6f6f;
 
     --font-size-xl: 2.5rem;
     --font-size-md: 1.125rem;
     --font-size-sm: 0.9375rem;
 
-    --img-outline: #e5e5e5;
+    --white: #ffffff;
+    --gray700: #111111;
+    --gray600: #333333;
+    --gray500: #5a5a5a;
+    --gray400: #6f6f6f;
+    --gray300: #aaaaaa;
+    --gray200: #e6e6e6;
+    --gray100: #f8f8f8;
+
+    --green600: #5c8135;
+    --green500: #7c9a5b;
+
+    /* light */
+    --brand-color: var(--green500);
+    --brand-color-text: var(--green600);
+    --primary-text-color: var(--gray700);
+    --secondary-text-color: var(--gray400);
+    --page-background-color: var(--white);
+
+    --img-outline: var(--gray200);
     --img-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -20,6 +35,7 @@ body {
     font-style: normal;
     font-size: var(--font-size-md);
     color: var(--primary-text-color);
+    background-color: var(--page-background-color);
 }
 
 h1 {
@@ -93,5 +109,15 @@ header nav li.active {
     }
     .desktop {
         display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-text-color: var(--gray200);
+        --secondary-text-color: var(--gray300);
+        --brand-color: var(--green500);
+        --brand-color-text: var(--green500);
+        --page-background-color: var(--gray700);
     }
 }
